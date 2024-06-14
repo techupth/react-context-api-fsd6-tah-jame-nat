@@ -12,11 +12,11 @@ function HomePage() {
       <div className="product-list">
         {products.map((product) => {
           return (
-            <div className="product">
+            <div className="product" key={product.id}>
               <div className="product-preview">
                 <img
-                  src="https://via.placeholder.com/250/250"
-                  alt="some product"
+                  src={product.image}
+                  alt={product.name}
                   width="250"
                   height="250"
                 />
