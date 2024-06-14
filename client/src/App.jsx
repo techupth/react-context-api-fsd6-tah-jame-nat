@@ -1,8 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { createContext } from "react";
 import "./App.css";
-
 import HomePage from "./pages/HomePage.jsx";
 import ViewProductPage from "./pages/ViewProductPage.jsx";
+import products from "./data/products.js";
+
+export const UserContext = createContext({});
+export const ProductsContext = createContext({});
 
 function App() {
   const userData = {
@@ -13,12 +17,16 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/product/view/:id" element={<ViewProductPage />} />
-        </Routes>
-      </Router>
+      <UserContext.Provider value={userData}>
+        <ProductsContext.Provider value={products}>
+          <Router>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/product/view/:id" element={<ViewProductPage />} />
+            </Routes>
+          </Router>
+        </ProductsContext.Provider>
+      </UserContext.Provider>
     </div>
   );
 }

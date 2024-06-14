@@ -1,8 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import AppHeader from "../components/AppHeader";
-import products from "../data/products.js";
+import { useContext } from "react";
+import { ProductsContext } from "../App.jsx";
 
 function HomePage() {
+  const products = useContext(ProductsContext);
+
   const navigate = useNavigate();
   return (
     <div>
@@ -12,7 +15,7 @@ function HomePage() {
       <div className="product-list">
         {products.map((product) => {
           return (
-            <div className="product">
+            <div className="product" key={product.id}>
               <div className="product-preview">
                 <img
                   src="https://via.placeholder.com/250/250"
