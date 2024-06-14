@@ -5,7 +5,7 @@ import { ProductsContext } from "../App";
 import { useState, useEffect } from "react";
 
 function ViewProductPage() {
-  const { level } = useContext(UserContext);
+  const { level, avatar } = useContext(UserContext);
   const products = useContext(ProductsContext);
   const [product, setProduct] = useState({});
   const navigate = useNavigate();
@@ -28,6 +28,7 @@ function ViewProductPage() {
       </div>
 
       <div className="product-promotion-box">
+        <img src={avatar} />
         <h2>คุณคือสมาชิกในระดับ {level} ดังนั้นคุณได้สิทธิพิเศษลด 50%</h2>
         <button onClick={() => alert("🥳🥳🥳🥳")}>กดรับสิทธิ</button>
       </div>
